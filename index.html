@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>6. Slovenský Zjazd SA / S-Anon 2025</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button onclick="switchLang('sk')">SK</button>
+  <button onclick="switchLang('en')">EN</button>
+</div>
+
+<header class="hero">
+  <img src="header.jpg" alt="Ranč Kráľova Lehota" class="hero-image">
+  <div class="hero-text">
+    <h1 data-sk="6. Slovenský Zjazd SA / S-Anon" data-en="6th Slovak SA / S-Anon Convention"></h1>
+    <p data-sk="26. – 28. september 2025 | Ranč Kráľova Lehota"
+       data-en="September 26–28, 2025 | Ranch Kráľova Lehota"></p>
+    <div id="countdown"></div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2 data-sk="Cena pobytu" data-en="Price"></h2>
+    <p data-sk="121 € / osoba (ubytovanie, plná penzia, registračný poplatok)"
+       data-en="€121 / person (accommodation, full board, registration fee)"></p>
+    <ul>
+      <li data-sk="38 € – Ubytovanie (2 noci / osoba)" data-en="€38 – Accommodation (2 nights / person)"></li>
+      <li data-sk="38 € – Plná penzia (2 dni / osoba)" data-en="€38 – Full board (2 days / person)"></li>
+      <li data-sk="45 € – Registračný poplatok" data-en="€45 – Registration fee"></li>
+    </ul>
+    <p data-sk="Registrácia je platná až po úhrade na bankový účet. Bez úhrady nie je vaše miesto rezervované."
+       data-en="Registration is confirmed only after payment to the bank account. Without payment, your spot is not reserved."></p>
+  </section>
+
+  <section>
+    <h2 data-sk="Ubytovanie" data-en="Accommodation"></h2>
+    <h3 data-sk="Chatky:" data-en="Cabins:"></h3>
+    <ul>
+      <li data-sk="4 × chatky – 6 lôžok (bez prísteliek)" data-en="4 × cabins – 6 beds (no extra beds)"></li>
+      <li data-sk="2 × chatky – 4 štandardné lôžka + 2 prístelky" data-en="2 × cabins – 4 standard beds + 2 extra beds"></li>
+    </ul>
+    <h3 data-sk="Hlavná budova:" data-en="Main building:"></h3>
+    <ul>
+      <li data-sk="5 × izby – spoločné sociálne zariadenie" data-en="5 × rooms – shared bathrooms"></li>
+      <li data-sk="4 × izby – vlastné sociálne zariadenie" data-en="4 × rooms – private bathrooms"></li>
+    </ul>
+    <p><a href="https://www.ranckralovalehota.sk/priestory/" target="_blank"
+          data-sk="Viac o ubytovaní →" data-en="More about accommodation →"></a></p>
+  </section>
+
+  <section>
+    <h2 data-sk="Program" data-en="Program"></h2>
+    <ul>
+      <li data-sk="Mítingy" data-en="Meetings"></li>
+      <li data-sk="Rozhovory" data-en="Conversations"></li>
+      <li data-sk="Talent show" data-en="Talent show"></li>
+      <li data-sk="Krásne prostredie v prírode" data-en="Beautiful natural surroundings"></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 data-sk="Registračný formulár" data-en="Registration Form"></h2>
+    <iframe src="https://your-form-url" title="Registration Form" width="100%" height="600px" frameborder="0"></iframe>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 <span data-sk="Slovenský Zjazd SA / S-Anon" data-en="Slovak SA / S-Anon Convention"></span></p>
+  <p>Email: <a href="mailto:sa.zjazd2025@gmail.com">sa.zjazd2025@gmail.com</a></p>
+</footer>
+
+<script>
+  const countdownEl = document.getElementById("countdown");
+  const eventDate = new Date("2025-09-26T00:00:00");
+  let lang = "sk";
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = eventDate - now;
+    if (diff <= 0) {
+      countdownEl.textContent = "";
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    countdownEl.textContent = days + (lang === 'sk' ? " dní do začiatku zjazdu" : " days until the event");
+  }
+
+  function switchLang(selected) {
+    lang = selected;
+    document.querySelectorAll('[data-sk]').forEach(el => {
+      el.textContent = el.dataset[selected];
+    });
+    updateCountdown();
+  }
+
+  switchLang(lang);
+  setInterval(updateCountdown, 1000 * 60);
+</script>
+
+</body>
+</html>
